@@ -1,2 +1,2 @@
 aiogram
-python-dotoenv
+python-dotoenv==1.0.0
