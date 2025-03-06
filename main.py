@@ -1,3 +1,10 @@
+import asyncio
+if __name__ == "__main__":
+    async def main():
+        await dp.start_polling(bot)
+
+if name == "__main__":
+    asyncio.run(main())
 from aiogram import Bot, Dispatcher, types
 import asyncio
 import logging
@@ -52,8 +59,8 @@ async def help_command(message: types.Message):
 async def echo_message(message: types.Message):
     await message.answer(f"Ты написал: {message.text}")
 if __name__ == "__main__":
-async def main():
-    await dp.start_polling(bot)
+    async def main():
+        await dp.start_polling(bot)
 
 if name == "__main__":
     asyncio.run(main())
