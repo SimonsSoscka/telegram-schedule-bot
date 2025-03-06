@@ -13,7 +13,7 @@ bot = Bot(token=TOKEN, parse_mode="HTML")
 dp = Dispatcher()
 
 # Функция для получения расписания (замени на свою логику)
-def get_расписание():
+def get_schedule():
     return (
         f"{hbold('📅 Расписание на сегодня:')}\n"
         "1️⃣ Пара 1 - 9:30\n"
@@ -23,24 +23,24 @@ def get_расписание():
     )
 
 # Команда /schedule для запроса расписания
-@dp.message(Command("расписание"))
-async def send_расписание(message: Message):
-    расписание_text = get_schedule()
-    await message.answer(расписание_text)
+@dp.message(Command("schedule"))
+async def send_schedule(message: Message):
+    schedule_text = get_schedule()
+    await message.answer(schedule_text)
 
 # Автоматическая отправка расписания в 8:00 утра
-async def расписание_task():
+async def scheduled_task():
     while True:
         now = datetime.datetime.now()
         if now.hour == 8 and now.minute == 0:  # Отправляет сообщение в 8:00
-            расписание_text = get_расписание()
-            await bot.send_message(CHAT_ID, расписание_text)
+            schedule_text = get_schedule()
+            await bot.send_message(CHAT_ID, schedule_text)
         await asyncio.sleep(60)  # Проверять время каждую минуту
 
 async def main():
     logging.basicConfig(level=logging.INFO)
-    asyncio.create_task(расписание_task())  # Запускаем автоматическую отправку
+    asyncio.create_task(scheduled_task())  # Запускаем автоматическую отправку
     await dp.start_polling(bot)
 
-if __name__ == "__main__":
+if name == "__main__":
     asyncio.run(main())
