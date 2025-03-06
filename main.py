@@ -21,15 +21,21 @@ async def main():
     dp = Dispatcher()
     
     await bot.send_message(chat_id="917911613", text="Бот запущен!")
-from aiogram import Bot, Dispatcher
 import asyncio
+from aiogram import Bot, Dispatcher, types
 
-TOKEN = "7462721993:AAHaWBxQymZv19uBsSsS6ws9Cum13C1djrQ"  # Подставь свой токен бота
+TOKEN = "7462721993:AAHaWBxQymZv19uBsSsS6ws9Cum13C1djrQ"
 bot = Bot(token=TOKEN)
-dp = Dispatcher()    
-await dp.start_polling(bot)
+dp = Dispatcher()
 
-if __name__ == "__main__":
+@dp.message_handler(commands=["start"])
+async def start_command(message: types.Message):
+    await message.answer("Привет! Я твой Сын.")
+
+async def main():
+    await dp.start_polling(bot)
+
+if name == "__main__":
     asyncio.run(main())
     import logging
 import os
