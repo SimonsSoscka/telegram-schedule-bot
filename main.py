@@ -5,12 +5,10 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.types import Message
 from aiogram.filters import Command
 from aiogram.utils.markdown import hbold
-
-TOKEN = "7462721993:AAHaWBxQymZv19uBsSsS6ws9Cum13C1djrQ"  # Вставь сюда свой токен бота
-CHAT_ID = 917911613  # Замени на свой Telegram ID (куда отправлять расписание)
-
-from aiogram import Bot
 from aiogram.client.default import DefaultBotProperties
+
+TOKEN = "7462721993:AAHaWBxQymZv19uBsSsS6ws9Cum13C1djrQ"  # Замени на свой токен
+CHAT_ID = 917911613  # Твой Telegram ID
 
 bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
 dp = Dispatcher()
@@ -35,14 +33,15 @@ async def send_schedule(message: Message):
 async def scheduled_task():
     while True:
         now = datetime.datetime.now()
-        if now.hour == 8 and now.minute == 0:  # Отправляет сообщение в 8:00
+        if now.hour == 8 and now.minute == 0:
             schedule_text = get_schedule()
             await bot.send_message(CHAT_ID, schedule_text)
-        await asyncio.sleep(60)  # Проверять время каждую минуту
+            await asyncio.sleep(60)  # Ждать минуту перед следующей проверкой
+        await asyncio.sleep(1)  # Проверять время каждую секунду
 
 async def main():
     logging.basicConfig(level=logging.INFO)
-    asyncio.create_task(scheduled_task())  # Запускаем автоматическую отправку
+    asyncio.create_task(scheduled_task())  # Запуск фоновой задачи
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
