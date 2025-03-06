@@ -1,5 +1,5 @@
 from aiogram import Bot, Dispatcher, types
-from aiogram.utils import executor
+import asyncio
 import logging
 import os
 import asyncio
@@ -52,4 +52,8 @@ async def help_command(message: types.Message):
 async def echo_message(message: types.Message):
     await message.answer(f"Ты написал: {message.text}")
 if __name__ == "__main__":
-    executor.start_polling(dp, skip_updates=True)
+    async def main():
+    await dp.start_polling(bot)
+
+if name == "__main__":
+    asyncio.run(main())
