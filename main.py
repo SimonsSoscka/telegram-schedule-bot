@@ -51,5 +51,5 @@ async def help_command(message: types.Message):
 @dp.message_handler()
 async def echo_message(message: types.Message):
     await message.answer(f"Ты написал: {message.text}")
-    if name == "__main__":
+if __name__ == "__main__":
     executor.start_polling(dp, skip_updates=True)
