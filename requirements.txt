@@ -2,4 +2,4 @@ pip>=24.0
 setuptools>=65.0.0
 wheel
 aiogram
-python-dotoenv
+python-dotenv
