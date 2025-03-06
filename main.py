@@ -12,5 +12,5 @@ async def main():
     await bot.send_message(chat_id="917911613", text="Бот запущен!")
     await dp.start_polling(bot)
 
-if name == "__main__":
+if __name__ == "__main__":
     asyncio.run(main())
