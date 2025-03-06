@@ -9,7 +9,10 @@ from aiogram.utils.markdown import hbold
 TOKEN = "7462721993:AAHaWBxQymZv19uBsSsS6ws9Cum13C1djrQ"  # Вставь сюда свой токен бота
 CHAT_ID = 917911613  # Замени на свой Telegram ID (куда отправлять расписание)
 
-bot = Bot(token=TOKEN, parse_mode="HTML")
+from aiogram import Bot
+from aiogram.client.default import DefaultBotProperties
+
+bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
 dp = Dispatcher()
 
 # Функция для получения расписания (замени на свою логику)
