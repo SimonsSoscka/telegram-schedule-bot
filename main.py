@@ -13,6 +13,9 @@ CHAT_ID = 917911613  # Твой Telegram ID
 bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
 dp = Dispatcher()
 
+@dp.message(Command("start"))
+async def start_command(message: Message):
+    await message.answer("Привет! Я бот с расписанием.")
 # Функция для получения расписания (замени на свою логику)
 def get_schedule():
     return (
