@@ -52,7 +52,7 @@ async def help_command(message: types.Message):
 async def echo_message(message: types.Message):
     await message.answer(f"Ты написал: {message.text}")
 if __name__ == "__main__":
-    async def main():
+async def main():
     await dp.start_polling(bot)
 
 if name == "__main__":
